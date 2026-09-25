@@ -23,7 +23,6 @@ Generate Conventional Commit messages for this repo.
 
 - Output only the commit message.
 - Format: `type: description`
-- Scope must be `backend`, `web`, or `mobile`, based on the changed files.
 - Use only the commit types listed above.
 - Keep the description concise and specific.
 - Include the task/code prefix when provided.
