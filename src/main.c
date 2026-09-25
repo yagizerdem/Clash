@@ -2,7 +2,7 @@
 #include  <stdio.h>
 
 int main(void) {
-    clash_install_crash_handler();
+     clash_install_crash_handler();
     printf("test");
     int *x = NULL;
     *x = 10;
