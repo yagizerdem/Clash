@@ -1,14 +1,12 @@
 #include "stack-trace/crash_handler.h"
 #include  <stdio.h>
-#include "tree-sitter-bash/src/tree_sitter/parser.h"
-
-const TSLanguage *tree_sitter_bash(void);
+#include  "clash-parser/parser.h"
 
 int main(void) {
     clash_install_crash_handler();
-    printf("test");
 
-
+    const TSTree* tree = bashParser("for i in $(seq 1 10;\ndo\n    echo $i\ndone");
+    TSNode root = ts_tree_root_node(tree);
 
 
     return 0;
