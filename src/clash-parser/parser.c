@@ -53,8 +53,6 @@ void checkSyntax(const TSTree* tree) {
     }
 
     TSNode root = ts_tree_root_node(tree);
-
-
 }
 
 
