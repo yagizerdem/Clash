@@ -6,3 +6,5 @@ endif()
 
 add_subdirectory(backward)
 add_subdirectory(stack-trace)
+add_subdirectory(tree-sitter)
+add_subdirectory(tree-sitter-bash)
