@@ -6,8 +6,9 @@ int main(void) {
     clash_install_crash_handler();
 
     const TSTree* tree = bashParser("for i in $(seq 1 10;\ndo\n    echo $i\ndone");
-    TSNode root = ts_tree_root_node(tree);
-
+    const TSNode root = ts_tree_root_node(tree);
+    printf("%s\n", serializeTsNode(root));
+    checkSyntax(tree);
 
     return 0;
 }

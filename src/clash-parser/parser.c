@@ -46,13 +46,44 @@ TSTree* bashParser(const char *source) {
     return tree;
 }
 
+
+
+static void checkSyntaxRecursive(const TSNode node) {
+    for (int i = 0; i < ts_node_child_count(node); i++) {
+        const TSNode child = ts_node_child(node, i);
+        const TSPoint point = ts_node_start_point(child);
+
+        if (ts_node_is_error(child)) {
+            fprintf(
+                stderr,
+            "clash: syntax error at line %u, column %u\n",
+                point.row + 1,
+                point.column + 1);
+            exit(-1);
+        }
+
+        if (ts_node_is_missing(child)) {
+            fprintf(
+                stderr,
+            "clash: expected '%s' at line %u, column %u\n",
+                ts_node_type(child),
+                point.row + 1,
+                point.column + 1);
+            exit(-1);
+        }
+
+        checkSyntaxRecursive(child);
+    }
+}
+
 void checkSyntax(const TSTree* tree) {
     if (tree == NULL) {
         perror("cannot parse null tree");
         exit(-1);
     }
 
-    TSNode root = ts_tree_root_node(tree);
+    const TSNode root = ts_tree_root_node(tree);
+    checkSyntaxRecursive(root);
 }
 
 
