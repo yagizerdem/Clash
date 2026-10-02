@@ -163,18 +163,18 @@ impl std::fmt::Debug for AstNode {
 
 // meta data
 
-pub struct NodeMeta {
-    pub syntax: SyntaxInfo,
-}
+// pub struct NodeMeta {
+//     pub syntax: SyntaxInfo,
+// }
 
-impl std::fmt::Debug for NodeMeta {
-    fn fmt(
-        &self,
-        f: &mut std::fmt::Formatter<'_>,
-    ) -> std::fmt::Result {
-        write!(f, "{:?}", self.syntax)
-    }
-}
+// impl std::fmt::Debug for NodeMeta {
+//     fn fmt(
+//         &self,
+//         f: &mut std::fmt::Formatter<'_>,
+//     ) -> std::fmt::Result {
+//         write!(f, "{:?}", self.syntax)
+//     }
+// }
 
 pub struct SyntaxInfo {
     pub raw: String,

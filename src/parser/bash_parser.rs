@@ -21,3 +21,20 @@ impl BashParser {
         return tree;
     }
 }
+
+
+pub fn print_formatted(tree: &tree_sitter::Tree) {
+    let node = tree.root_node();
+    print_formatted_recursive(node, 0);
+}
+
+
+pub fn print_formatted_recursive(node: tree_sitter::Node,  depth: usize) {
+    print!("{} {:?}", " ".repeat(depth), node);
+
+    for i in 0..node.child_count() {
+        if let Some(child) = node.child(i) {
+            print_formatted_recursive(child, depth + 2);
+        }
+    }
+}
