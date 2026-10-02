@@ -56,7 +56,7 @@ pub fn get_required_children_by_field_name<'a>(node: tree_sitter::Node<'a>, fiel
     return Ok(children);
 }
 
-pub fn get_optional_children_by_field_name<'a>(node: tree_sitter::Node<'a>, field_name: &str) -> Result<Vec<tree_sitter::Node<'a>>, String> {
+pub fn get_optional_children_by_field_name<'a>(node: tree_sitter::Node<'a>, field_name: &str) -> Result<Option<Vec<tree_sitter::Node<'a>>>, String> {
     let mut children = Vec::new();
     for i in 0..node.child_count() {
         if let Some(name) = node.field_name_for_child(i as u32) {
@@ -67,7 +67,7 @@ pub fn get_optional_children_by_field_name<'a>(node: tree_sitter::Node<'a>, fiel
             }
         }
     }
-    return Ok(children);
+    return Ok(Some(children));
 }
 
 pub fn get_required_child_by_field_name<'a>(node: tree_sitter::Node<'a>, field_name: &str) -> Result<tree_sitter::Node<'a>, String> {

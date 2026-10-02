@@ -1,9 +1,9 @@
 use crate::parser::ast::core::*;
 
 pub struct BinaryExpr {
-    pub left: Box<AstNode>,
+    pub left: Option<Box<AstNode>>,
     pub operator: String,
-    pub right: Vec<AstNode>,
+    pub right: Option<Vec<AstNode>>,
     pub syntax_info: SyntaxInfo,
 }
 
