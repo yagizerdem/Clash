@@ -43,7 +43,7 @@ impl std::fmt::Debug for Concatenation {
 }
 
 pub struct ParenthesizedExpression {
-    pub expression: Box<AstNode>,
+    pub expression: Vec<AstNode>,
     pub syntax_info: SyntaxInfo,
 }
 
