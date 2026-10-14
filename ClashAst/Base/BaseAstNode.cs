@@ -12,8 +12,11 @@ public abstract class BaseAstNode : IAstNode
         Syntax = Required(syntax, nameof(syntax));
     }
 
+    // used for visitor pattern to implement application logic
     public abstract T Accept<T>(IVisitor visitor);
 
+
+    // utility methods
     public static T Required<T>(T value, string name) =>
         value ?? throw new ArgumentNullException(name);
 
