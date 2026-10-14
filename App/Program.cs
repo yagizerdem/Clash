@@ -1,4 +1,4 @@
 ﻿using Clash.Parser;
 
 var parser = new ClashParser();
-parser.Test();
+parser.parse("echo hit");

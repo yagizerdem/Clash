@@ -7,4 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="TreeSitter.DotNet" Version="1.1.0" />
+      <ProjectReference Include="..\BashParser\BashParser.csproj" />
+  </ItemGroup>
+
 </Project>

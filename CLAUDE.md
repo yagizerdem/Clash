@@ -7,6 +7,7 @@ A Unix/bash-like interactive shell written in C# (.NET 10, `net10.0`, nullable e
 - `clash.slnx` – solution file
 - `app/` – console app (REPL host, entry point)
 - `ClashParser/` – class library (lexer / parser / AST)
+- `BashParser/` – class library (tree sitter bash compability and syntax error detection layer)
 
 Keep shell logic in class libraries; `app` only hosts the REPL. Run with `dotnet run --project app`.
 
