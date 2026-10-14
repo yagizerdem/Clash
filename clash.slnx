@@ -2,4 +2,5 @@
   <Project Path="App/App.csproj" />
   <Project Path="ClashParser/ClashParser.csproj" />
   <Project Path="BashParser/BashParser.csproj" />
+  <Project Path="ClashAst/ClashAst.csproj" />
 </Solution>

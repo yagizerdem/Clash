@@ -5,21 +5,21 @@ namespace Clash.Parser;
 public class ClashParser
 {
     
-    public void parse(string command)
+    public void Parse(string command)
     {
-        Console.WriteLine(parseAndSerializeTStree(command));
+        Console.WriteLine(ParseAndSerializeTStree(command));
     }
 
-    public TreeSitter.Tree parseAndReturnTree(string command)
+    public TreeSitter.Tree ParseAndReturnTree(string command)
     {
         BashParser bashParser = new BashParser();
         var tree = bashParser.Parse(command);
         return tree;
     }
 
-    public string parseAndSerializeTStree(string command)
+    public string ParseAndSerializeTStree(string command)
     {
-        var tree = parseAndReturnTree(command);
+        var tree = ParseAndReturnTree(command);
         return tree.RootNode.ToString();    
     }
 
