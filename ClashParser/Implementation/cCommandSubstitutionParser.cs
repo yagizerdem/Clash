@@ -12,16 +12,16 @@ public class cCommandSubstitutionParser : ClashBaseParser {
     }
 
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "command_substitution");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
 
         TreeSitter.Node? tsRedirectNode = tsNode.GetChildForField("redirect");
-        IAstNode? fileRedirectNode = this.IsMissing(tsRedirectNode)
+        cIAstNode? fileRedirectNode = this.IsMissing(tsRedirectNode)
                 ? null
                 : this.ParseChild(tsRedirectNode);
-        List<IAstNode> parts = this.CollectNamedChildren(tsNode);
+        List<cIAstNode> parts = this.CollectNamedChildren(tsNode);
 
-        return new CommandSubstitutionNode(syntaxInfo, parts, fileRedirectNode);
+        return new cCommandSubstitutionNode(syntaxInfo, parts, fileRedirectNode);
     }
 }

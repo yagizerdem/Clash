@@ -11,10 +11,10 @@ public class cUnsetCommandParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "unset_command");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
-        List<IAstNode> targets = this.CollectNamedChildren(tsNode);
-        return new UnsetCommandNode(syntaxInfo, targets);
+        List<cIAstNode> targets = this.CollectNamedChildren(tsNode);
+        return new cUnsetCommandNode(syntaxInfo, targets);
     }
 }

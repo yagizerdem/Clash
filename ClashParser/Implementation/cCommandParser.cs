@@ -11,17 +11,17 @@ public class cCommandParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "command");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
         if(this.IsMissing(tsNode.GetChildForField("name")))
         {
             throw new ArgumentException("Cannot parse a command without a name");
         }
-        IAstNode name = this.ParseChild(tsNode.GetChildForField("name")!);
-        List<IAstNode> arguments = this.ParseFields(tsNode, "argument");
-        List<IAstNode> redirects = this.ParseFields(tsNode, "redirect");
-        List<IAstNode> prefixes = [];
+        cIAstNode name = this.ParseChild(tsNode.GetChildForField("name")!);
+        List<cIAstNode> arguments = this.ParseFields(tsNode, "argument");
+        List<cIAstNode> redirects = this.ParseFields(tsNode, "redirect");
+        List<cIAstNode> prefixes = [];
 
         for (int i = 0; i < tsNode.NamedChildren.Count; i++) {
             TreeSitter.Node child = tsNode.NamedChildren[i];
@@ -31,11 +31,11 @@ public class cCommandParser : ClashBaseParser {
             }
         }
 
-        return new CommandNode(syntaxInfo, name, arguments, redirects, prefixes);
+        return new cCommandNode(syntaxInfo, name, arguments, redirects, prefixes);
     }
 
-    private List<IAstNode> ParseFields(TreeSitter.Node tsNode, string fieldName) {
-        List<IAstNode> nodes = [];
+    private List<cIAstNode> ParseFields(TreeSitter.Node tsNode, string fieldName) {
+        List<cIAstNode> nodes = [];
         foreach (TreeSitter.Node child in this.GetChildrenByFieldName(tsNode, fieldName)) {
             nodes.Add(this.ParseChild(child));
         }

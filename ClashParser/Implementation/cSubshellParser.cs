@@ -11,15 +11,15 @@ public class cSubshellParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "subshell");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
-        List<IAstNode> statements = [];
+        List<cIAstNode> statements = [];
 
         for (int i = 0; i < tsNode.NamedChildren.Count; i++) {
             statements.Add(this.ParseChild(tsNode.NamedChildren[i]));
         }
 
-        return new SubshellNode(syntaxInfo, statements);
+        return new cSubshellNode(syntaxInfo, statements);
     }
 }

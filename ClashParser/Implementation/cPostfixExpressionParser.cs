@@ -11,15 +11,15 @@ public class cPostfixExpressionParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "postfix_expression");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
 
         TreeSitter.Node tsOperand = tsNode.NamedChildren[0];
         TreeSitter.Node? tsOperator = tsNode.GetChildForField("operator");
-        IAstNode operand = this.Dispatcher(tsOperand).Parse(tsOperand);
+        cIAstNode operand = this.Dispatcher(tsOperand).Parse(tsOperand);
         string @operator = this.GetProgramByOffsets(tsOperator);
 
-        return new PostfixExpressionNode(syntaxInfo, operand, @operator);
+        return new cPostfixExpressionNode(syntaxInfo, operand, @operator);
     }
 }

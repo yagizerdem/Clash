@@ -11,12 +11,12 @@ public class cCaseStatementParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "case_statement");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
         TreeSitter.Node? tsValue = tsNode.GetChildForField("value");
-        IAstNode value = this.ParseChild(tsValue!);
-        List<IAstNode> items = [];
+        cIAstNode value = this.ParseChild(tsValue!);
+        List<cIAstNode> items = [];
 
         for (int i = 0; i < tsNode.NamedChildren.Count; i++) {
             TreeSitter.Node child = tsNode.NamedChildren[i];
@@ -25,6 +25,6 @@ public class cCaseStatementParser : ClashBaseParser {
             }
         }
 
-        return new CaseStatementNode(syntaxInfo, value, items);
+        return new cCaseStatementNode(syntaxInfo, value, items);
     }
 }

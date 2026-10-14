@@ -11,11 +11,11 @@ public class cNegatedCommandParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "negated_command");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
         TreeSitter.Node tsCommand = tsNode.NamedChildren[0];
-        StmtNode command = (StmtNode) this.ParseChild(tsCommand);
-        return new NegatedCommandNode(syntaxInfo, command);
+        cStmtNode command = (cStmtNode) this.ParseChild(tsCommand);
+        return new cNegatedCommandNode(syntaxInfo, command);
     }
 }

@@ -10,9 +10,9 @@ public class cStringContentParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "string_content");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
-        return new StringContentNode(syntaxInfo, syntaxInfo.Raw);
+        return new cStringContentNode(syntaxInfo, syntaxInfo.Raw);
     }
 }

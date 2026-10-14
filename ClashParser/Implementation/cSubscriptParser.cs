@@ -10,11 +10,11 @@ public class cSubscriptParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "subscript");
         TreeSitter.Node? tsName = tsNode.GetChildForField("name");
         TreeSitter.Node? tsIndex = tsNode.GetChildForField("index");
-        List<IAstNode> suffix = [];
+        List<cIAstNode> suffix = [];
 
         for (int i = 0; i < tsNode.NamedChildren.Count; i++) {
             if (tsNode.GetFieldNameForNamedChild(i) == null) {
@@ -22,7 +22,7 @@ public class cSubscriptParser : ClashBaseParser {
             }
         }
 
-        return new SubscriptNode(
+        return new cSubscriptNode(
                 this.ExtractSyntaxInfo(),
                 this.ParseChild(tsName),
                 this.ParseChild(tsIndex),

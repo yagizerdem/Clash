@@ -11,18 +11,18 @@ public class cHeredocRedirectParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "heredoc_redirect");
         TreeSitter.Node? tsDescriptor = tsNode.GetChildForField("descriptor");
         TreeSitter.Node? tsOperator = tsNode.GetChildForField("operator");
         TreeSitter.Node? tsRight = tsNode.GetChildForField("right");
 
-        IAstNode? descriptor = this.IsMissing(tsDescriptor) ? null : this.ParseChild(tsDescriptor);
+        cIAstNode? descriptor = this.IsMissing(tsDescriptor) ? null : this.ParseChild(tsDescriptor);
         string? @operator = this.IsMissing(tsOperator) ? null : this.GetProgramByOffsets(tsOperator);
-        StmtNode? right = this.IsMissing(tsRight) ? null : (StmtNode) this.ParseChild(tsRight);
-        List<IAstNode> arguments = this.ParseFields(tsNode, "argument");
-        List<IAstNode> redirects = this.ParseFields(tsNode, "redirect");
-        List<IAstNode> parts = [];
+        cStmtNode? right = this.IsMissing(tsRight) ? null : (cStmtNode) this.ParseChild(tsRight);
+        List<cIAstNode> arguments = this.ParseFields(tsNode, "argument");
+        List<cIAstNode> redirects = this.ParseFields(tsNode, "redirect");
+        List<cIAstNode> parts = [];
 
         for (int i = 0; i < tsNode.NamedChildren.Count; i++) {
             if (tsNode.GetFieldNameForNamedChild(i) == null) {
@@ -30,7 +30,7 @@ public class cHeredocRedirectParser : ClashBaseParser {
             }
         }
 
-        return new HeredocRedirectNode(
+        return new cHeredocRedirectNode(
                 this.ExtractSyntaxInfo(),
                 descriptor,
                 RedirectionKindExtensions.FromSymbol(this.FindRedirectOperator(tsNode)),
@@ -42,8 +42,8 @@ public class cHeredocRedirectParser : ClashBaseParser {
         );
     }
 
-    private List<IAstNode> ParseFields(TreeSitter.Node tsNode, string fieldName) {
-        List<IAstNode> nodes = [];
+    private List<cIAstNode> ParseFields(TreeSitter.Node tsNode, string fieldName) {
+        List<cIAstNode> nodes = [];
         foreach (TreeSitter.Node child in this.GetChildrenByFieldName(tsNode, fieldName)) {
             nodes.Add(this.ParseChild(child));
         }

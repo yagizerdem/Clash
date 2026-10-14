@@ -12,7 +12,7 @@ public class cBinaryExpressionParser : ClashBaseParser {
     }
 
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "binary_expression");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
         TreeSitter.Node? tsLeftNode = tsNode.GetChildForField("left");
@@ -20,14 +20,14 @@ public class cBinaryExpressionParser : ClashBaseParser {
         string @operator = this.GetProgramByOffsets(tsOperatorNode);
         List<TreeSitter.Node> tsRightNodes = this.GetChildrenByFieldName(tsNode, "right");
 
-        IAstNode? cLeftNode = this.IsMissing(tsLeftNode)
+        cIAstNode? cLeftNode = this.IsMissing(tsLeftNode)
                 ? null
                 : this.ParseChild(tsLeftNode);
-        List<IAstNode> cRightNodes = [];
+        List<cIAstNode> cRightNodes = [];
         tsRightNodes.ForEach(tsn => {
             cRightNodes.Add(this.ParseChild(tsn));
         });
 
-        return new BinaryExpressionNode(syntaxInfo, cLeftNode, @operator, cRightNodes);
+        return new cBinaryExpressionNode(syntaxInfo, cLeftNode, @operator, cRightNodes);
     }
 }

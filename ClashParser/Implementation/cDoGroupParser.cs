@@ -10,12 +10,12 @@ public class cDoGroupParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "do_group");
-        List<IAstNode> statements = [];
+        List<cIAstNode> statements = [];
         for (int i = 0; i < tsNode.NamedChildren.Count; i++) {
             statements.Add(this.ParseChild(tsNode.NamedChildren[i]));
         }
-        return new DoGroupNode(this.ExtractSyntaxInfo(), statements);
+        return new cDoGroupNode(this.ExtractSyntaxInfo(), statements);
     }
 }

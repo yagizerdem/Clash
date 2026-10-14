@@ -10,9 +10,9 @@ public class cTestOperatorParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "test_operator");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
-        return new TestOperatorNode(syntaxInfo, syntaxInfo.Raw);
+        return new cTestOperatorNode(syntaxInfo, syntaxInfo.Raw);
     }
 }

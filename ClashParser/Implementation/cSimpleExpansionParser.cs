@@ -12,7 +12,7 @@ public class cSimpleExpansionParser : ClashBaseParser {
     }
 
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "simple_expansion");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
 
@@ -22,9 +22,9 @@ public class cSimpleExpansionParser : ClashBaseParser {
 
         TreeSitter.Node childTsNode = tsNode.NamedChildren[0];
         ClashBaseParser parser = this.Dispatcher(childTsNode);
-        IAstNode identifier = parser.Parse(childTsNode);
+        cIAstNode identifier = parser.Parse(childTsNode);
 
-        SimpleExpansionNode node = new SimpleExpansionNode(syntaxInfo, identifier);
+        cSimpleExpansionNode node = new cSimpleExpansionNode(syntaxInfo, identifier);
         return node;
     }
 }

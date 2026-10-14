@@ -10,10 +10,10 @@ public class cCaseItemParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "case_item");
-        List<IAstNode> values = [];
-        List<IAstNode> statements = [];
+        List<cIAstNode> values = [];
+        List<cIAstNode> statements = [];
 
         foreach (TreeSitter.Node child in this.GetChildrenByFieldName(tsNode, "value")) {
             values.Add(this.ParseChild(child));
@@ -22,7 +22,7 @@ public class cCaseItemParser : ClashBaseParser {
         for (int i = 0; i < tsNode.NamedChildren.Count; i++) {
             TreeSitter.Node child = tsNode.NamedChildren[i];
             if (tsNode.GetFieldNameForNamedChild(i) == null) {
-                statements.Add((StmtNode) this.ParseChild(child));
+                statements.Add((cStmtNode) this.ParseChild(child));
             }
         }
 
@@ -34,6 +34,6 @@ public class cCaseItemParser : ClashBaseParser {
                 ? null
                 : this.GetProgramByOffsets(tsTerminator!);
 
-        return new CaseItemNode(this.ExtractSyntaxInfo(), values, statements, terminator);
+        return new cCaseItemNode(this.ExtractSyntaxInfo(), values, statements, terminator);
     }
 }

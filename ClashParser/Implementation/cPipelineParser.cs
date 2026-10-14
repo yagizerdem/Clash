@@ -12,16 +12,16 @@ public class cPipelineParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "pipeline");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
-        List<IAstNode> commands = [];
+        List<cIAstNode> commands = [];
         List<PipeOperator> operators = [];
 
         for (int i = 0; i < tsNode.Children.Count; i++) {
             TreeSitter.Node child = tsNode.Children[i];
             if (child.IsNamed) {
-                commands.Add((StmtNode) this.ParseChild(child));
+                commands.Add((cStmtNode) this.ParseChild(child));
             } else {
                 string raw = this.GetProgramByOffsets(child);
                 if (raw.Equals("|")) {
@@ -32,6 +32,6 @@ public class cPipelineParser : ClashBaseParser {
             }
         }
 
-        return new PipelineNode(syntaxInfo, commands, operators);
+        return new cPipelineNode(syntaxInfo, commands, operators);
     }
 }

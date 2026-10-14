@@ -10,15 +10,15 @@ public class cElifClauseParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "elif_clause");
         int thenOffset = this.FindThenOffset(tsNode);
-        List<IAstNode> condition = [];
-        List<IAstNode> thenBranch = [];
+        List<cIAstNode> condition = [];
+        List<cIAstNode> thenBranch = [];
 
         for (int i = 0; i < tsNode.NamedChildren.Count; i++) {
             TreeSitter.Node child = tsNode.NamedChildren[i];
-            StmtNode statement = (StmtNode) this.ParseChild(child);
+            cStmtNode statement = (cStmtNode) this.ParseChild(child);
             if (child.StartIndex < thenOffset) {
                 condition.Add(statement);
             } else {
@@ -26,7 +26,7 @@ public class cElifClauseParser : ClashBaseParser {
             }
         }
 
-        return new ElifClauseNode(this.ExtractSyntaxInfo(), condition, thenBranch);
+        return new cElifClauseNode(this.ExtractSyntaxInfo(), condition, thenBranch);
     }
 
     private int FindThenOffset(TreeSitter.Node tsNode) {

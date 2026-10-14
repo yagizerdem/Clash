@@ -10,8 +10,8 @@ public class cHeredocBodyParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "heredoc_body");
-        return new HeredocBodyNode(this.ExtractSyntaxInfo(), this.CollectNamedChildren(tsNode));
+        return new cHeredocBodyNode(this.ExtractSyntaxInfo(), this.CollectNamedChildren(tsNode));
     }
 }

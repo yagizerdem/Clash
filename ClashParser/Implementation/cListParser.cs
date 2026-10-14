@@ -12,10 +12,10 @@ public class cListParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "list");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
-        List<IAstNode> statements = [];
+        List<cIAstNode> statements = [];
         List<ListOperator> operators = [];
 
         for (int i = 0; i < tsNode.Children.Count; i++) {
@@ -30,7 +30,7 @@ public class cListParser : ClashBaseParser {
             }
         }
 
-        return new ListNode(syntaxInfo, statements, operators);
+        return new cListNode(syntaxInfo, statements, operators);
     }
 
     private ListOperator? ParseOperator(string raw) {

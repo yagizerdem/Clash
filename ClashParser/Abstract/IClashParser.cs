@@ -6,7 +6,7 @@ using TreeSitter;
 
 public interface IClashParser {
     void CheckType(TreeSitter.Node tsNode, string tsTypeName);
-    IAstNode Parse(TreeSitter.Node tsNode);
+    cIAstNode Parse(TreeSitter.Node tsNode);
 }
 
 

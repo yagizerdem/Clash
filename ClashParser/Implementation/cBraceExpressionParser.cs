@@ -12,10 +12,10 @@ public class cBraceExpressionParser : ClashBaseParser {
     }
 
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "brace_expression");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
-        List<IAstNode> parts = this.CollectNamedChildren();
-        return new BraceExpressionNode(syntaxInfo, parts);
+        List<cIAstNode> parts = this.CollectNamedChildren();
+        return new cBraceExpressionNode(syntaxInfo, parts);
     }
 }

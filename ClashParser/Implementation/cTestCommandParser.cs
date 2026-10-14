@@ -11,12 +11,12 @@ public class cTestCommandParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "test_command");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
-        IAstNode? expression = tsNode.NamedChildren.Count == 0
+        cIAstNode? expression = tsNode.NamedChildren.Count == 0
                 ? null
                 : this.ParseChild(tsNode.NamedChildren[0]);
-        return new TestCommandNode(syntaxInfo, expression);
+        return new cTestCommandNode(syntaxInfo, expression);
     }
 }
