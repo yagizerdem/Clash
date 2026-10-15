@@ -11,10 +11,10 @@ public class cProcessSubstitutionParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "process_substitution");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
-        List<IAstNode> parts = this.CollectNamedChildren(tsNode);
-        return new ProcessSubstitutionNode(syntaxInfo, parts);
+        List<cIAstNode> parts = this.CollectNamedChildren(tsNode);
+        return new cProcessSubstitutionNode(syntaxInfo, parts);
     }
 }

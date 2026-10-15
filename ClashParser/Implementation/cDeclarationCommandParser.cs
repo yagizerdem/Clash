@@ -12,12 +12,12 @@ public class cDeclarationCommandParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "declaration_command");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
         DeclarationKind kind = this.ParseKind(syntaxInfo.Raw);
-        List<IAstNode> arguments = this.CollectNamedChildren(tsNode);
-        return new DeclarationCommandNode(syntaxInfo, kind, arguments);
+        List<cIAstNode> arguments = this.CollectNamedChildren(tsNode);
+        return new cDeclarationCommandNode(syntaxInfo, kind, arguments);
     }
 
     private DeclarationKind ParseKind(string raw) {

@@ -11,10 +11,10 @@ public class cCompoundStatementParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "compound_statement");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
-        List<IAstNode> elements = this.CollectNamedChildren(tsNode);
-        return new CompoundStatementNode(syntaxInfo, elements);
+        List<cIAstNode> elements = this.CollectNamedChildren(tsNode);
+        return new cCompoundStatementNode(syntaxInfo, elements);
     }
 }

@@ -11,11 +11,11 @@ public class cRegexParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "regex");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
         string regex = this.GetProgramByOffsets();
 
-        return new RegexNode(syntaxInfo, regex);
+        return new cRegexNode(syntaxInfo, regex);
     }
 }

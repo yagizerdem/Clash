@@ -12,12 +12,12 @@ public class cExpansionParser : ClashBaseParser {
     }
 
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "expansion");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
         List<TreeSitter.Node> fieldNodes = this.GetChildrenByFieldName("operator");
         List<string> @operator = fieldNodes.Select(GetProgramByOffsets).ToList();
-        List<IAstNode> parts = this.CollectNamedChildren(tsNode);
-        return new ExpansionNode(syntaxInfo, @operator, parts);
+        List<cIAstNode> parts = this.CollectNamedChildren(tsNode);
+        return new cExpansionNode(syntaxInfo, @operator, parts);
     }
 }

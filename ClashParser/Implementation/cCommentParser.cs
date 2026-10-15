@@ -10,9 +10,9 @@ public class cCommentParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "comment");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
-        return new CommentNode(syntaxInfo, syntaxInfo.Raw);
+        return new cCommentNode(syntaxInfo, syntaxInfo.Raw);
     }
 }

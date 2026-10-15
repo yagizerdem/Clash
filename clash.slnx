@@ -3,4 +3,7 @@
   <Project Path="ClashParser/ClashParser.csproj" />
   <Project Path="BashParser/BashParser.csproj" />
   <Project Path="ClashAst/ClashAst.csproj" />
+  <Project Path="Executor/Executor.csproj" />
+  <Project Path="LibcWrapper/LibcWrapper.csproj" />
+  <Project Path="Runtime/Runtime.csproj" />
 </Solution>

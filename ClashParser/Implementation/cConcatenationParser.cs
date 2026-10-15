@@ -11,10 +11,10 @@ public class cConcatenationParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "concatenation");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
-        List<IAstNode> parts = this.CollectNamedChildren(tsNode);
-        return new ConcatenationNode(syntaxInfo, parts);
+        List<cIAstNode> parts = this.CollectNamedChildren(tsNode);
+        return new cConcatenationNode(syntaxInfo, parts);
     }
 }

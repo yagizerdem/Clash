@@ -11,17 +11,17 @@ public class cFunctionDefinitionParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "function_definition");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
-        IAstNode name = this.ParseChild(tsNode.GetChildForField("name"));
-        IAstNode body = this.ParseChild(tsNode.GetChildForField("body"));
-        List<IAstNode> redirects = [];
+        cIAstNode name = this.ParseChild(tsNode.GetChildForField("name"));
+        cIAstNode body = this.ParseChild(tsNode.GetChildForField("body"));
+        List<cIAstNode> redirects = [];
 
         foreach (TreeSitter.Node child in this.GetChildrenByFieldName(tsNode, "redirect")) {
             redirects.Add(this.ParseChild(child));
         }
 
-        return new FunctionDefinitionNode(syntaxInfo, name, body, redirects);
+        return new cFunctionDefinitionNode(syntaxInfo, name, body, redirects);
     }
 }

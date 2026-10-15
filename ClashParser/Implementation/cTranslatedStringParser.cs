@@ -11,11 +11,11 @@ public class cTranslatedStringParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "translated_string");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
         TreeSitter.Node stringTsNode = tsNode.NamedChildren[0];
-        IAstNode stringAst = this.Dispatcher(stringTsNode).Parse(stringTsNode);
-        return new TranslatedStringNode(syntaxInfo, stringAst);
+        cIAstNode stringAst = this.Dispatcher(stringTsNode).Parse(stringTsNode);
+        return new cTranslatedStringNode(syntaxInfo, stringAst);
     }
 }

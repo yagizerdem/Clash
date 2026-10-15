@@ -10,12 +10,12 @@ public class cElseClauseParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "else_clause");
-        List<IAstNode> statements = [];
+        List<cIAstNode> statements = [];
         for (int i = 0; i < tsNode.NamedChildren.Count; i++) {
-            statements.Add((StmtNode) this.ParseChild(tsNode.NamedChildren[i]));
+            statements.Add((cStmtNode) this.ParseChild(tsNode.NamedChildren[i]));
         }
-        return new ElseClauseNode(this.ExtractSyntaxInfo(), statements);
+        return new cElseClauseNode(this.ExtractSyntaxInfo(), statements);
     }
 }

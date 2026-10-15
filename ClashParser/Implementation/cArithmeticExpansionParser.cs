@@ -11,10 +11,10 @@ public class cArithmeticExpansionParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "arithmetic_expansion");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
-        List<IAstNode> parts = this.CollectNamedChildren(tsNode);
-        return new ArithmeticExpansionNode(syntaxInfo, parts);
+        List<cIAstNode> parts = this.CollectNamedChildren(tsNode);
+        return new cArithmeticExpansionNode(syntaxInfo, parts);
     }
 }

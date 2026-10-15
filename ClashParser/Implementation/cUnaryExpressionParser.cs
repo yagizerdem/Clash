@@ -11,16 +11,16 @@ public class cUnaryExpressionParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "unary_expression");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
 
         TreeSitter.Node? tsOperator = tsNode.GetChildForField("operator");
         TreeSitter.Node tsOperand = this.FindOperand(tsNode, tsOperator);
         string @operator = this.GetProgramByOffsets(tsOperator);
-        IAstNode operand = this.Dispatcher(tsOperand).Parse(tsOperand);
+        cIAstNode operand = this.Dispatcher(tsOperand).Parse(tsOperand);
 
-        return new UnaryExpressionNode(syntaxInfo, @operator, operand);
+        return new cUnaryExpressionNode(syntaxInfo, @operator, operand);
     }
 
     private TreeSitter.Node FindOperand(TreeSitter.Node tsNode, TreeSitter.Node tsOperator) {

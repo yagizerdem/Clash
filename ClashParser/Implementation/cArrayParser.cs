@@ -10,8 +10,8 @@ public class cArrayParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "array");
-        return new ArrayNode(this.ExtractSyntaxInfo(), this.CollectNamedChildren(tsNode));
+        return new cArrayNode(this.ExtractSyntaxInfo(), this.CollectNamedChildren(tsNode));
     }
 }

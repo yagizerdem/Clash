@@ -10,12 +10,12 @@ public class cHerestringRedirectParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "herestring_redirect");
         TreeSitter.Node? tsDescriptor = tsNode.GetChildForField("descriptor");
-        IAstNode? descriptor = this.IsMissing(tsDescriptor) ? null : this.ParseChild(tsDescriptor);
+        cIAstNode? descriptor = this.IsMissing(tsDescriptor) ? null : this.ParseChild(tsDescriptor);
         TreeSitter.Node tsValue = this.FindValue(tsNode, tsDescriptor);
-        return new HerestringRedirectNode(
+        return new cHerestringRedirectNode(
                 this.ExtractSyntaxInfo(),
                 descriptor,
                 this.ParseChild(tsValue)

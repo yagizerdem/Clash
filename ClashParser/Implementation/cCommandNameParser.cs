@@ -10,9 +10,9 @@ public class cCommandNameParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "command_name");
         TreeSitter.Node tsValue = tsNode.NamedChildren[0];
-        return new CommandNameNode(this.ExtractSyntaxInfo(), this.ParseChild(tsValue));
+        return new cCommandNameNode(this.ExtractSyntaxInfo(), this.ParseChild(tsValue));
     }
 }

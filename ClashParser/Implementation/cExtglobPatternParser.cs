@@ -10,8 +10,8 @@ public class cExtglobPatternParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "extglob_pattern");
-        return new ExtglobPatternNode(this.ExtractSyntaxInfo());
+        return new cExtglobPatternNode(this.ExtractSyntaxInfo());
     }
 }

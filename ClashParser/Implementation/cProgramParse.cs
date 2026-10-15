@@ -11,10 +11,10 @@ public class cProgramParse : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "program");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
-        List<IAstNode> stmts = this.CollectNamedChildren();
-        return new ProgramNode(syntaxInfo, stmts);
+        List<cIAstNode> stmts = this.CollectNamedChildren();
+        return new cProgramNode(syntaxInfo, stmts);
     }
 }

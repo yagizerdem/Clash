@@ -11,17 +11,17 @@ public class cForStatementParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "for_statement");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
-        IAstNode variable = this.ParseChild(tsNode.GetChildForField("variable"));
-        IAstNode body = this.ParseChild(tsNode.GetChildForField("body"));
-        List<IAstNode> values = [];
+        cIAstNode variable = this.ParseChild(tsNode.GetChildForField("variable"));
+        cIAstNode body = this.ParseChild(tsNode.GetChildForField("body"));
+        List<cIAstNode> values = [];
 
         foreach (TreeSitter.Node child in this.GetChildrenByFieldName(tsNode, "value")) {
             values.Add(this.ParseChild(child));
         }
 
-        return new ForStatementNode(syntaxInfo, variable, values, body);
+        return new cForStatementNode(syntaxInfo, variable, values, body);
     }
 }

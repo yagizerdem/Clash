@@ -151,13 +151,13 @@ public abstract class ClashBaseParser : IClashParser {
 
 
     // implementation classes should provide the parsing logic for each specific node type
-    public abstract IAstNode Parse(TreeSitter.Node node); 
+    public abstract cIAstNode Parse(TreeSitter.Node node); 
 
     public bool IsMissing(TreeSitter.Node? node) {
         return node == null || node.IsMissing;
     }
 
-    public IAstNode ParseChild(TreeSitter.Node node) {
+    public cIAstNode ParseChild(TreeSitter.Node node) {
         if (this.IsMissing(node)) {
             throw new ArgumentException("Cannot parse a missing Tree-sitter child node");
         }
@@ -167,28 +167,28 @@ public abstract class ClashBaseParser : IClashParser {
         }
 
         ClashBaseParser parser = this.Dispatcher(node);
-        IAstNode childNode = parser.Parse(node);
+        cIAstNode childNode = parser.Parse(node);
 
         return childNode;
     }
 
-    public List<IAstNode> CollectNamedChildren(TreeSitter.Node tsNode){
-        List<IAstNode> parts = new List<IAstNode>();
+    public List<cIAstNode> CollectNamedChildren(TreeSitter.Node tsNode){
+        List<cIAstNode> parts = new List<cIAstNode>();
         for(int i = 0; i < tsNode.NamedChildren.Count; i++) {
             TreeSitter.Node child = tsNode.NamedChildren[i];
             ClashBaseParser parser = this.Dispatcher(child);
-            IAstNode cNode = parser.Parse(child);
+            cIAstNode cNode = parser.Parse(child);
             parts.Add(cNode);
         }
         return parts;
     }
 
-    public List<IAstNode> CollectNamedChildren(){
-        List<IAstNode> parts = new List<IAstNode>();
+    public List<cIAstNode> CollectNamedChildren(){
+        List<cIAstNode> parts = new List<cIAstNode>();
         for(int i = 0; i < tsNode.NamedChildren.Count; i++) {
             TreeSitter.Node child = tsNode.NamedChildren[i];
             ClashBaseParser parser = this.Dispatcher(child);
-            IAstNode cNode = parser.Parse(child);
+            cIAstNode cNode = parser.Parse(child);
             parts.Add(cNode);
         }
         return parts;

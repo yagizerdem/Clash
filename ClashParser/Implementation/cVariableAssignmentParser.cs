@@ -11,17 +11,17 @@ public class cVariableAssignmentParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "variable_assignment");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
 
         TreeSitter.Node? tsNameNode = tsNode.GetChildForField("name");
         TreeSitter.Node? tsValueNode = tsNode.GetChildForField("value");
 
-        IAstNode nameNode = this.Dispatcher(tsNameNode).Parse(tsNameNode);
-        IAstNode valueNode = this.Dispatcher(tsValueNode).Parse(tsValueNode);
+        cIAstNode nameNode = this.Dispatcher(tsNameNode).Parse(tsNameNode);
+        cIAstNode valueNode = this.Dispatcher(tsValueNode).Parse(tsValueNode);
 
-        VariableAssignmentNode node = new VariableAssignmentNode(syntaxInfo, nameNode, valueNode);
+        cVariableAssignmentNode node = new cVariableAssignmentNode(syntaxInfo, nameNode, valueNode);
         return node;
     }
 }

@@ -11,11 +11,11 @@ public class cVariableNameParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "variable_name");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
         string variableName = this.GetProgramByOffsets();
-        VariableNameNode node = new VariableNameNode(syntaxInfo, variableName);
+        cVariableNameNode node = new cVariableNameNode(syntaxInfo, variableName);
         return node;
     }
 

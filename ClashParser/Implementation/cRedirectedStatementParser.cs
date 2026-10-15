@@ -11,19 +11,19 @@ public class cRedirectedStatementParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "redirected_statement");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
         TreeSitter.Node? tsBody = tsNode.GetChildForField("body");
-        StmtNode? body = this.IsMissing(tsBody)
+        cStmtNode? body = this.IsMissing(tsBody)
                 ? null
-                : (StmtNode) this.ParseChild(tsBody);
-        List<IAstNode> redirects = [];
+                : (cStmtNode) this.ParseChild(tsBody);
+        List<cIAstNode> redirects = [];
 
         foreach (TreeSitter.Node child in this.GetChildrenByFieldName(tsNode, "redirect")) {
             redirects.Add(this.ParseChild(child));
         }
 
-        return new RedirectedStatementNode(syntaxInfo, body, redirects);
+        return new cRedirectedStatementNode(syntaxInfo, body, redirects);
     }
 }

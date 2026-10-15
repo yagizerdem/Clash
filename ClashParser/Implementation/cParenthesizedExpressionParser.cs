@@ -11,11 +11,11 @@ public class cParenthesizedExpressionParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "parenthesized_expression");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
         TreeSitter.Node tsExpression = tsNode.NamedChildren[0];
-        IAstNode expression = this.Dispatcher(tsExpression).Parse(tsExpression);
-        return new ParenthesizedExpressionNode(syntaxInfo, expression);
+        cIAstNode expression = this.Dispatcher(tsExpression).Parse(tsExpression);
+        return new cParenthesizedExpressionNode(syntaxInfo, expression);
     }
 }

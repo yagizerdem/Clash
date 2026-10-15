@@ -11,9 +11,9 @@ public class cAnsiCStringParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "ansi_c_string");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
-        return new AnsiCStringNode(syntaxInfo);
+        return new cAnsiCStringNode(syntaxInfo);
     }
 }

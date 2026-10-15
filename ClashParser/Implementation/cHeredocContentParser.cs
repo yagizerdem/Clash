@@ -10,8 +10,8 @@ public class cHeredocContentParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "heredoc_content");
-        return new HeredocContentNode(this.ExtractSyntaxInfo());
+        return new cHeredocContentNode(this.ExtractSyntaxInfo());
     }
 }

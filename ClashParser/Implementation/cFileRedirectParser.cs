@@ -13,16 +13,16 @@ public class cFileRedirectParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "file_redirect");
         TreeSitter.Node? tsDescriptor = tsNode.GetChildForField("descriptor");
-        IAstNode? descriptor = this.IsMissing(tsDescriptor) ? null : this.ParseChild(tsDescriptor);
-        List<IAstNode> destinations = [];
+        cIAstNode? descriptor = this.IsMissing(tsDescriptor) ? null : this.ParseChild(tsDescriptor);
+        List<cIAstNode> destinations = [];
         foreach (TreeSitter.Node child in this.GetChildrenByFieldName(tsNode, "destination")) {
             destinations.Add(this.ParseChild(child));
         }
 
-        return new FileRedirectNode(
+        return new cFileRedirectNode(
                 this.ExtractSyntaxInfo(),
                 descriptor,
                 RedirectionKindExtensions.FromSymbol(this.FindOperator(tsNode)),

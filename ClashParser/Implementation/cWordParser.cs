@@ -11,10 +11,10 @@ public class cWordParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "word");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
-        return new WordNode(syntaxInfo);
+        return new cWordNode(syntaxInfo);
     }
 
 }

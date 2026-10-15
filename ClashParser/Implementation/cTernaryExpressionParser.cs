@@ -11,15 +11,15 @@ public class cTernaryExpressionParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "ternary_expression");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
 
-        IAstNode condition = this.ParseField(tsNode, "condition");
-        IAstNode consequence = this.ParseField(tsNode, "consequence");
-        IAstNode alternative = this.ParseField(tsNode, "alternative");
+        cIAstNode condition = this.ParseField(tsNode, "condition");
+        cIAstNode consequence = this.ParseField(tsNode, "consequence");
+        cIAstNode alternative = this.ParseField(tsNode, "alternative");
 
-        return new TernaryExpressionNode(
+        return new cTernaryExpressionNode(
                 syntaxInfo,
                 condition,
                 consequence,
@@ -27,7 +27,7 @@ public class cTernaryExpressionParser : ClashBaseParser {
         );
     }
 
-    private IAstNode ParseField(TreeSitter.Node tsNode, string fieldName) {
+    private cIAstNode ParseField(TreeSitter.Node tsNode, string fieldName) {
         TreeSitter.Node? tsField = tsNode.GetChildForField(fieldName);
         return this.Dispatcher(tsField).Parse(tsField);
     }

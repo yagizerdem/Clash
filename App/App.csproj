@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ClashParser\ClashParser.csproj" />
+    <ProjectReference Include="..\LibcWrapper\LibcWrapper.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

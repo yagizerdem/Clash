@@ -12,21 +12,21 @@ public class cWhileStatementParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "while_statement");
         SyntaxInfo syntaxInfo = this.ExtractSyntaxInfo();
         LoopKind loopKind = syntaxInfo.Raw.TrimStart().StartsWith("until")
                 ? LoopKind.Until
                 : LoopKind.While;
-        List<IAstNode> condition = [];
+        List<cIAstNode> condition = [];
 
         foreach (TreeSitter.Node child in this.GetChildrenByFieldName(tsNode, "condition")) {
             if (child.IsNamed) {
-                condition.Add((StmtNode) this.ParseChild(child));
+                condition.Add((cStmtNode) this.ParseChild(child));
             }
         }
 
-        IAstNode body = this.ParseChild(tsNode.GetChildForField("body"));
-        return new WhileStatementNode(syntaxInfo, loopKind, condition, body);
+        cIAstNode body = this.ParseChild(tsNode.GetChildForField("body"));
+        return new cWhileStatementNode(syntaxInfo, loopKind, condition, body);
     }
 }

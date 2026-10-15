@@ -10,8 +10,8 @@ public class cFileDescriptorParser : ClashBaseParser {
     {
     }
 
-    public override IAstNode Parse(TreeSitter.Node tsNode) {
+    public override cIAstNode Parse(TreeSitter.Node tsNode) {
         this.CheckType(tsNode, "file_descriptor");
-        return new FileDescriptorNode(this.ExtractSyntaxInfo());
+        return new cFileDescriptorNode(this.ExtractSyntaxInfo());
     }
 }

@@ -11,74 +11,74 @@ namespace Clash.Ast.Visitor;
 public interface IVisitor
 {
     // expr
-    T VisitBinaryExpression<T>(BinaryExpressionNode node);
-    T VisitConcatenation<T>(ConcatenationNode node);
-    T VisitParenthesizedExpression<T>(ParenthesizedExpressionNode node);
-    T VisitPostfixExpression<T>(PostfixExpressionNode node);
-    T VisitTernaryExpression<T>(TernaryExpressionNode node);
-    T VisitUnaryExpression<T>(UnaryExpressionNode node);
-    T VisitWord<T>(WordNode node);
+    T VisitBinaryExpression<T>(cBinaryExpressionNode node);
+    T VisitConcatenation<T>(cConcatenationNode node);
+    T VisitParenthesizedExpression<T>(cParenthesizedExpressionNode node);
+    T VisitPostfixExpression<T>(cPostfixExpressionNode node);
+    T VisitTernaryExpression<T>(cTernaryExpressionNode node);
+    T VisitUnaryExpression<T>(cUnaryExpressionNode node);
+    T VisitWord<T>(cWordNode node);
 
     // primary expr
-    T VisitAnsiCString<T>(AnsiCStringNode node);
-    T VisitArithmeticExpansion<T>(ArithmeticExpansionNode node);
-    T VisitBraceExpression<T>(BraceExpressionNode node);
-    T VisitCommandSubstitution<T>(CommandSubstitutionNode node);
-    T VisitExpansion<T>(ExpansionNode node);
-    T VisitNumber<T>(NumberNode node);
-    T VisitProcessSubstitution<T>(ProcessSubstitutionNode node);
-    T VisitRawString<T>(RawStringNode node);
-    T VisitSimpleExpansion<T>(SimpleExpansionNode node);
-    T VisitString<T>(StringNode node);
-    T VisitTranslatedString<T>(TranslatedStringNode node);
+    T VisitAnsiCString<T>(cAnsiCStringNode node);
+    T VisitArithmeticExpansion<T>(cArithmeticExpansionNode node);
+    T VisitBraceExpression<T>(cBraceExpressionNode node);
+    T VisitCommandSubstitution<T>(cCommandSubstitutionNode node);
+    T VisitExpansion<T>(cExpansionNode node);
+    T VisitNumber<T>(cNumberNode node);
+    T VisitProcessSubstitution<T>(cProcessSubstitutionNode node);
+    T VisitRawString<T>(cRawStringNode node);
+    T VisitSimpleExpansion<T>(cSimpleExpansionNode node);
+    T VisitString<T>(cStringNode node);
+    T VisitTranslatedString<T>(cTranslatedStringNode node);
 
     // stmt
-    T VisitCStyleForStatement<T>(CStyleForStatementNode node);
-    T VisitCaseStatement<T>(CaseStatementNode node);
-    T VisitCommand<T>(CommandNode node);
-    T VisitCompoundStatement<T>(CompoundStatementNode node);
-    T VisitDeclarationCommand<T>(DeclarationCommandNode node);
-    T VisitForStatement<T>(ForStatementNode node);
-    T VisitFunctionDefinition<T>(FunctionDefinitionNode node);
-    T VisitIfStatement<T>(IfStatementNode node);
-    T VisitList<T>(ListNode node);
-    T VisitNegatedCommand<T>(NegatedCommandNode node);
-    T VisitPipeline<T>(PipelineNode node);
-    T VisitRedirectedStatement<T>(RedirectedStatementNode node);
-    T VisitSubshell<T>(SubshellNode node);
-    T VisitTestCommand<T>(TestCommandNode node);
-    T VisitUnsetCommand<T>(UnsetCommandNode node);
-    T VisitVariableAssignment<T>(VariableAssignmentNode node);
-    T VisitVariableAssignments<T>(VariableAssignmentsNode node);
-    T VisitWhileStatement<T>(WhileStatementNode node);
+    T VisitCStyleForStatement<T>(cCStyleForStatementNode node);
+    T VisitCaseStatement<T>(cCaseStatementNode node);
+    T VisitCommand<T>(cCommandNode node);
+    T VisitCompoundStatement<T>(cCompoundStatementNode node);
+    T VisitDeclarationCommand<T>(cDeclarationCommandNode node);
+    T VisitForStatement<T>(cForStatementNode node);
+    T VisitFunctionDefinition<T>(cFunctionDefinitionNode node);
+    T VisitIfStatement<T>(cIfStatementNode node);
+    T VisitList<T>(cListNode node);
+    T VisitNegatedCommand<T>(cNegatedCommandNode node);
+    T VisitPipeline<T>(cPipelineNode node);
+    T VisitRedirectedStatement<T>(cRedirectedStatementNode node);
+    T VisitSubshell<T>(cSubshellNode node);
+    T VisitTestCommand<T>(cTestCommandNode node);
+    T VisitUnsetCommand<T>(cUnsetCommandNode node);
+    T VisitVariableAssignment<T>(cVariableAssignmentNode node);
+    T VisitVariableAssignments<T>(cVariableAssignmentsNode node);
+    T VisitWhileStatement<T>(cWhileStatementNode node);
 
     // other
-    T VisitArray<T>(ArrayNode node);
-    T VisitCaseItem<T>(CaseItemNode node);
-    T VisitCommandName<T>(CommandNameNode node);
-    T VisitComment<T>(CommentNode node);
-    T VisitDoGroup<T>(DoGroupNode node);
-    T VisitElifClause<T>(ElifClauseNode node);
-    T VisitElseClause<T>(ElseClauseNode node);
-    T VisitExtglobPattern<T>(ExtglobPatternNode node);
-    T VisitFileDescriptor<T>(FileDescriptorNode node);
-    T VisitFileRedirect<T>(FileRedirectNode node);
-    T VisitHeredocBody<T>(HeredocBodyNode node);
-    T VisitHeredocContent<T>(HeredocContentNode node);
-    T VisitHeredocEnd<T>(HeredocEndNode node);
-    T VisitHeredocRedirect<T>(HeredocRedirectNode node);
-    T VisitHeredocStart<T>(HeredocStartNode node);
-    T VisitHerestringRedirect<T>(HerestringRedirectNode node);
-    T VisitRegex<T>(RegexNode node);
-    T VisitSpecialVariableName<T>(SpecialVariableNameNode node);
-    T VisitStringContent<T>(StringContentNode node);
-    T VisitSubscript<T>(SubscriptNode node);
-    T VisitTestOperator<T>(TestOperatorNode node);
-    T VisitVariableName<T>(VariableNameNode node);
+    T VisitArray<T>(cArrayNode node);
+    T VisitCaseItem<T>(cCaseItemNode node);
+    T VisitCommandName<T>(cCommandNameNode node);
+    T VisitComment<T>(cCommentNode node);
+    T VisitDoGroup<T>(cDoGroupNode node);
+    T VisitElifClause<T>(cElifClauseNode node);
+    T VisitElseClause<T>(cElseClauseNode node);
+    T VisitExtglobPattern<T>(cExtglobPatternNode node);
+    T VisitFileDescriptor<T>(cFileDescriptorNode node);
+    T VisitFileRedirect<T>(cFileRedirectNode node);
+    T VisitHeredocBody<T>(cHeredocBodyNode node);
+    T VisitHeredocContent<T>(cHeredocContentNode node);
+    T VisitHeredocEnd<T>(cHeredocEndNode node);
+    T VisitHeredocRedirect<T>(cHeredocRedirectNode node);
+    T VisitHeredocStart<T>(cHeredocStartNode node);
+    T VisitHerestringRedirect<T>(cHerestringRedirectNode node);
+    T VisitRegex<T>(cRegexNode node);
+    T VisitSpecialVariableName<T>(cSpecialVariableNameNode node);
+    T VisitStringContent<T>(cStringContentNode node);
+    T VisitSubscript<T>(cSubscriptNode node);
+    T VisitTestOperator<T>(cTestOperatorNode node);
+    T VisitVariableName<T>(cVariableNameNode node);
 
     // root
-    T VisitProgram<T>(ProgramNode node);
+    T VisitProgram<T>(cProgramNode node);
 
     // core
-    T VisitConcreteBase<T>(ConcreteBaseAstNode node);
+    T VisitConcreteBase<T>(cConcreteBaseAstNode node);
 }
