@@ -1,13 +1,13 @@
 ﻿using Clash.Ast.Base;
 using Clash.Parser;
+using Runtime;
 
 var parser = new ClashParser();
 cIAstNode rootNode = parser.Parse("echo hit");
-
 
 Console.WriteLine("Parsing completed.");
 
 
 
-int myPid = LibcWrapper.Methods.getpid();
-Console.WriteLine($"My PID is: {myPid}");
+Core core = new Core();
+core.Run();

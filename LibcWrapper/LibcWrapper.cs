@@ -1332,6 +1332,187 @@ namespace LibcWrapper
         }
     }
 
+    public partial struct __mbstate_t
+    {
+        public int __count;
+
+        [NativeTypeName("__AnonymousRecord___mbstate_t_L16_C3")]
+        public ___value_e__Union __value;
+
+        [StructLayout(LayoutKind.Explicit)]
+        public partial struct ___value_e__Union
+        {
+            [FieldOffset(0)]
+            [NativeTypeName("unsigned int")]
+            public uint __wch;
+
+            [FieldOffset(0)]
+            [NativeTypeName("char[4]")]
+            public ___wchb_e__FixedBuffer __wchb;
+
+            [InlineArray(4)]
+            public partial struct ___wchb_e__FixedBuffer
+            {
+                public sbyte e0;
+            }
+        }
+    }
+
+    public partial struct _G_fpos_t
+    {
+        [NativeTypeName("__off_t")]
+        public nint __pos;
+
+        public __mbstate_t __state;
+    }
+
+    public partial struct _G_fpos64_t
+    {
+        [NativeTypeName("__off64_t")]
+        public nint __pos;
+
+        public __mbstate_t __state;
+    }
+
+    public partial struct _IO_marker
+    {
+    }
+
+    public partial struct _IO_codecvt
+    {
+    }
+
+    public partial struct _IO_wide_data
+    {
+    }
+
+    public unsafe partial struct _IO_FILE
+    {
+        public int _flags;
+
+        [NativeTypeName("char *")]
+        public sbyte* _IO_read_ptr;
+
+        [NativeTypeName("char *")]
+        public sbyte* _IO_read_end;
+
+        [NativeTypeName("char *")]
+        public sbyte* _IO_read_base;
+
+        [NativeTypeName("char *")]
+        public sbyte* _IO_write_base;
+
+        [NativeTypeName("char *")]
+        public sbyte* _IO_write_ptr;
+
+        [NativeTypeName("char *")]
+        public sbyte* _IO_write_end;
+
+        [NativeTypeName("char *")]
+        public sbyte* _IO_buf_base;
+
+        [NativeTypeName("char *")]
+        public sbyte* _IO_buf_end;
+
+        [NativeTypeName("char *")]
+        public sbyte* _IO_save_base;
+
+        [NativeTypeName("char *")]
+        public sbyte* _IO_backup_base;
+
+        [NativeTypeName("char *")]
+        public sbyte* _IO_save_end;
+
+        [NativeTypeName("struct _IO_marker *")]
+        public _IO_marker* _markers;
+
+        [NativeTypeName("struct _IO_FILE *")]
+        public _IO_FILE* _chain;
+
+        public int _fileno;
+
+        public int _flags2;
+
+        [NativeTypeName("__off_t")]
+        public nint _old_offset;
+
+        [NativeTypeName("unsigned short")]
+        public ushort _cur_column;
+
+        [NativeTypeName("signed char")]
+        public sbyte _vtable_offset;
+
+        [NativeTypeName("char[1]")]
+        public __shortbuf_e__FixedBuffer _shortbuf;
+
+        [NativeTypeName("_IO_lock_t *")]
+        public void* _lock;
+
+        [NativeTypeName("__off64_t")]
+        public nint _offset;
+
+        [NativeTypeName("struct _IO_codecvt *")]
+        public _IO_codecvt* _codecvt;
+
+        [NativeTypeName("struct _IO_wide_data *")]
+        public _IO_wide_data* _wide_data;
+
+        [NativeTypeName("struct _IO_FILE *")]
+        public _IO_FILE* _freeres_list;
+
+        public void* _freeres_buf;
+
+        [NativeTypeName("size_t")]
+        public nuint __pad5;
+
+        public int _mode;
+
+        [NativeTypeName("char[20]")]
+        public __unused2_e__FixedBuffer _unused2;
+
+        public partial struct __shortbuf_e__FixedBuffer
+        {
+            public sbyte e0;
+
+            [UnscopedRef]
+            public ref sbyte this[int index]
+            {
+                get
+                {
+                    return ref Unsafe.Add(ref e0, index);
+                }
+            }
+
+            [UnscopedRef]
+            public Span<sbyte> AsSpan(int length) => MemoryMarshal.CreateSpan(ref e0, length);
+        }
+
+        [InlineArray(20)]
+        public partial struct __unused2_e__FixedBuffer
+        {
+            public sbyte e0;
+        }
+    }
+
+    public unsafe partial struct _IO_cookie_io_functions_t
+    {
+        [NativeTypeName("cookie_read_function_t *")]
+        public delegate* unmanaged[Cdecl]<void*, sbyte*, nuint, nint> read;
+
+        [NativeTypeName("cookie_write_function_t *")]
+        public delegate* unmanaged[Cdecl]<void*, sbyte*, nuint, nint> write;
+
+        [NativeTypeName("cookie_seek_function_t *")]
+        public delegate* unmanaged[Cdecl]<void*, nint*, int, int> seek;
+
+        [NativeTypeName("cookie_close_function_t *")]
+        public delegate* unmanaged[Cdecl]<void*, int> close;
+    }
+
+    public partial struct obstack
+    {
+    }
+
     public static unsafe partial class Methods
     {
         [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -2585,5 +2766,288 @@ namespace LibcWrapper
 
         [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
         public static extern int pidfd_spawnp([NativeTypeName("int *__restrict")] int* __pidfd, [NativeTypeName("const char *__restrict")] sbyte* __file, [NativeTypeName("const posix_spawn_file_actions_t *__restrict")] posix_spawn_file_actions_t* __facts, [NativeTypeName("const posix_spawnattr_t *__restrict")] posix_spawnattr_t* __attrp, [NativeTypeName("char *const[]")] sbyte** __argv, [NativeTypeName("char *const[]")] sbyte** __envp);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int* __errno_location();
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int remove([NativeTypeName("const char *")] sbyte* __filename);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int rename([NativeTypeName("const char *")] sbyte* __old, [NativeTypeName("const char *")] sbyte* __new);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int renameat(int __oldfd, [NativeTypeName("const char *")] sbyte* __old, int __newfd, [NativeTypeName("const char *")] sbyte* __new);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int renameat2(int __oldfd, [NativeTypeName("const char *")] sbyte* __old, int __newfd, [NativeTypeName("const char *")] sbyte* __new, [NativeTypeName("unsigned int")] uint __flags);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int fclose([NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        [return: NativeTypeName("FILE *")]
+        public static extern _IO_FILE* tmpfile();
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        [return: NativeTypeName("FILE *")]
+        public static extern _IO_FILE* tmpfile64();
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        [return: NativeTypeName("char *")]
+        public static extern sbyte* tmpnam([NativeTypeName("char[20]")] sbyte* param0);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        [return: NativeTypeName("char *")]
+        public static extern sbyte* tmpnam_r([NativeTypeName("char[20]")] sbyte* __s);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        [return: NativeTypeName("char *")]
+        public static extern sbyte* tempnam([NativeTypeName("const char *")] sbyte* __dir, [NativeTypeName("const char *")] sbyte* __pfx);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int fflush([NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int fflush_unlocked([NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int fcloseall();
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        [return: NativeTypeName("FILE *")]
+        public static extern _IO_FILE* freopen([NativeTypeName("const char *__restrict")] sbyte* __filename, [NativeTypeName("const char *__restrict")] sbyte* __modes, [NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        [return: NativeTypeName("FILE *")]
+        public static extern _IO_FILE* fopen64([NativeTypeName("const char *__restrict")] sbyte* __filename, [NativeTypeName("const char *__restrict")] sbyte* __modes);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        [return: NativeTypeName("FILE *")]
+        public static extern _IO_FILE* freopen64([NativeTypeName("const char *__restrict")] sbyte* __filename, [NativeTypeName("const char *__restrict")] sbyte* __modes, [NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        [return: NativeTypeName("FILE *")]
+        public static extern _IO_FILE* fdopen(int __fd, [NativeTypeName("const char *")] sbyte* __modes);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        [return: NativeTypeName("FILE *")]
+        public static extern _IO_FILE* fopencookie([NativeTypeName("void *__restrict")] void* __magic_cookie, [NativeTypeName("const char *__restrict")] sbyte* __modes, [NativeTypeName("cookie_io_functions_t")] _IO_cookie_io_functions_t __io_funcs);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        [return: NativeTypeName("FILE *")]
+        public static extern _IO_FILE* fmemopen(void* __s, [NativeTypeName("size_t")] nuint __len, [NativeTypeName("const char *")] sbyte* __modes);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        [return: NativeTypeName("FILE *")]
+        public static extern _IO_FILE* open_memstream([NativeTypeName("char **")] sbyte** __bufloc, [NativeTypeName("size_t *")] nuint* __sizeloc);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern void setbuf([NativeTypeName("FILE *")] _IO_FILE* __stream, [NativeTypeName("char *__restrict")] sbyte* __buf);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int setvbuf([NativeTypeName("FILE *")] _IO_FILE* __stream, [NativeTypeName("char *__restrict")] sbyte* __buf, int __modes, [NativeTypeName("size_t")] nuint __n);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern void setbuffer([NativeTypeName("FILE *")] _IO_FILE* __stream, [NativeTypeName("char *__restrict")] sbyte* __buf, [NativeTypeName("size_t")] nuint __size);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern void setlinebuf([NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int vasprintf([NativeTypeName("char **__restrict")] sbyte** __ptr, [NativeTypeName("const char *__restrict")] sbyte* __f, [NativeTypeName("__gnuc_va_list")] __va_list_tag* __arg);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int __asprintf([NativeTypeName("char **__restrict")] sbyte** __ptr, [NativeTypeName("const char *__restrict")] sbyte* __fmt, __arglist);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int asprintf([NativeTypeName("char **__restrict")] sbyte** __ptr, [NativeTypeName("const char *__restrict")] sbyte* __fmt, __arglist);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int vdprintf(int __fd, [NativeTypeName("const char *__restrict")] sbyte* __fmt, [NativeTypeName("__gnuc_va_list")] __va_list_tag* __arg);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int dprintf(int __fd, [NativeTypeName("const char *__restrict")] sbyte* __fmt, __arglist);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int fgetc([NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int getc([NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int getchar();
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int getc_unlocked([NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int getchar_unlocked();
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int fgetc_unlocked([NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int fputc(int __c, [NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int putc(int __c, [NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int putchar(int __c);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int fputc_unlocked(int __c, [NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int putc_unlocked(int __c, [NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int putchar_unlocked(int __c);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int getw([NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int putw(int __w, [NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        [return: NativeTypeName("char *")]
+        public static extern sbyte* fgets([NativeTypeName("char *__restrict")] sbyte* __s, int __n, [NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        [return: NativeTypeName("char *")]
+        public static extern sbyte* fgets_unlocked([NativeTypeName("char *__restrict")] sbyte* __s, int __n, [NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        [return: NativeTypeName("__ssize_t")]
+        public static extern nint __getdelim([NativeTypeName("char **__restrict")] sbyte** __lineptr, [NativeTypeName("size_t *")] nuint* __n, int __delimiter, [NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        [return: NativeTypeName("__ssize_t")]
+        public static extern nint getdelim([NativeTypeName("char **__restrict")] sbyte** __lineptr, [NativeTypeName("size_t *")] nuint* __n, int __delimiter, [NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        [return: NativeTypeName("__ssize_t")]
+        public static extern nint getline([NativeTypeName("char **__restrict")] sbyte** __lineptr, [NativeTypeName("size_t *")] nuint* __n, [NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int fputs([NativeTypeName("const char *__restrict")] sbyte* __s, [NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int puts([NativeTypeName("const char *")] sbyte* __s);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int ungetc(int __c, [NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int fputs_unlocked([NativeTypeName("const char *__restrict")] sbyte* __s, [NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        [return: NativeTypeName("size_t")]
+        public static extern nuint fread_unlocked([NativeTypeName("void *__restrict")] void* __ptr, [NativeTypeName("size_t")] nuint __size, [NativeTypeName("size_t")] nuint __n, [NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        [return: NativeTypeName("size_t")]
+        public static extern nuint fwrite_unlocked([NativeTypeName("const void *__restrict")] void* __ptr, [NativeTypeName("size_t")] nuint __size, [NativeTypeName("size_t")] nuint __n, [NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int fseek([NativeTypeName("FILE *")] _IO_FILE* __stream, [NativeTypeName("long")] nint __off, int __whence);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        [return: NativeTypeName("long")]
+        public static extern nint ftell([NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern void rewind([NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int fseeko([NativeTypeName("FILE *")] _IO_FILE* __stream, [NativeTypeName("__off_t")] nint __off, int __whence);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        [return: NativeTypeName("__off_t")]
+        public static extern nint ftello([NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int fgetpos([NativeTypeName("FILE *")] _IO_FILE* __stream, [NativeTypeName("fpos_t *")] _G_fpos_t* __pos);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int fsetpos([NativeTypeName("FILE *")] _IO_FILE* __stream, [NativeTypeName("const fpos_t *")] _G_fpos_t* __pos);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int fseeko64([NativeTypeName("FILE *")] _IO_FILE* __stream, [NativeTypeName("__off64_t")] nint __off, int __whence);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        [return: NativeTypeName("__off64_t")]
+        public static extern nint ftello64([NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int fgetpos64([NativeTypeName("FILE *")] _IO_FILE* __stream, [NativeTypeName("fpos64_t *")] _G_fpos64_t* __pos);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int fsetpos64([NativeTypeName("FILE *")] _IO_FILE* __stream, [NativeTypeName("const fpos64_t *")] _G_fpos64_t* __pos);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern void clearerr([NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int feof([NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int ferror([NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern void clearerr_unlocked([NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int feof_unlocked([NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int ferror_unlocked([NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern void perror([NativeTypeName("const char *")] sbyte* __s);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int fileno([NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int fileno_unlocked([NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int pclose([NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        [return: NativeTypeName("FILE *")]
+        public static extern _IO_FILE* popen([NativeTypeName("const char *")] sbyte* __command, [NativeTypeName("const char *")] sbyte* __modes);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        [return: NativeTypeName("char *")]
+        public static extern sbyte* ctermid([NativeTypeName("char *")] sbyte* __s);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        [return: NativeTypeName("char *")]
+        public static extern sbyte* cuserid([NativeTypeName("char *")] sbyte* __s);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int obstack_printf([NativeTypeName("struct obstack *__restrict")] obstack* __obstack, [NativeTypeName("const char *__restrict")] sbyte* __format, __arglist);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int obstack_vprintf([NativeTypeName("struct obstack *__restrict")] obstack* __obstack, [NativeTypeName("const char *__restrict")] sbyte* __format, [NativeTypeName("__gnuc_va_list")] __va_list_tag* __args);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern void flockfile([NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int ftrylockfile([NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern void funlockfile([NativeTypeName("FILE *")] _IO_FILE* __stream);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int __uflow([NativeTypeName("FILE *")] _IO_FILE* param0);
+
+        [DllImport("libc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int __overflow([NativeTypeName("FILE *")] _IO_FILE* param0, int param1);
     }
 }
