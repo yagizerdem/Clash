@@ -17,11 +17,14 @@ class VisitForStatement : AbstractEvaluator<Result>
     override public Result Evaluate()
     {
 
-        this.forStatementNode.Variable.Accept(this.cIAstNodeVisitor);
+        StringResult variable = (StringResult)this.forStatementNode.Variable.Accept(this.cIAstNodeVisitor);
+        List<StringResult> values = new List<StringResult>();
         for(int i = 0; i < this.forStatementNode.Values.Count; i++)
         {
-            this.forStatementNode.Values[i].Accept(this.cIAstNodeVisitor);
+            values.Add((StringResult)this.forStatementNode.Values[i].Accept(this.cIAstNodeVisitor));
         }
+        
+        
         this.forStatementNode.Body.Accept(this.cIAstNodeVisitor);
 
         return new EmptyResult();

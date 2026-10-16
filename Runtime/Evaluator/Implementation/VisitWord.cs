@@ -15,6 +15,7 @@ class VisitWord : AbstractEvaluator<Result>
 
     override public Result Evaluate()
     {
-        return new EmptyResult();
+        string value = this.node_.Syntax.Raw;
+        return new StringResult(value);
     }
 }

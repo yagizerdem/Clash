@@ -2,8 +2,15 @@
 using Clash.Parser;
 using Runtime;
 
+
+
 var parser = new ClashParser();
-cIAstNode rootNode = parser.Parse("echo hit");
+cIAstNode rootNode = parser.Parse(
+@"for i in a b c;
+do
+    echo $i
+done"
+);
 
 
 

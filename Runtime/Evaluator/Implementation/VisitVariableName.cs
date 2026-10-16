@@ -15,6 +15,7 @@ class VisitVariableName : AbstractEvaluator<Result>
 
     override public Result Evaluate()
     {
-        return new EmptyResult();
+        string identifier = this.node_.Syntax.Raw;
+        return new StringResult(identifier);
     }
 }
