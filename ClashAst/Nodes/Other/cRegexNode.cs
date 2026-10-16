@@ -15,5 +15,5 @@ public class cRegexNode : cBaseAstNode
         Regex = regex;
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitRegex<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitRegex(this);
 }

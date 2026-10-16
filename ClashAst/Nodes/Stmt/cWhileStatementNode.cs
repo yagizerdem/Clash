@@ -22,5 +22,5 @@ public sealed class cWhileStatementNode : cStmtNode
         Body = cStmtNode.Required(body, "body");
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitWhileStatement<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitWhileStatement(this);
 }

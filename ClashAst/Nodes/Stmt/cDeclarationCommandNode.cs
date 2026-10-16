@@ -19,5 +19,5 @@ public sealed class cDeclarationCommandNode : cStmtNode
         Arguments = cStmtNode.CopyList(arguments, "arguments");
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitDeclarationCommand<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitDeclarationCommand(this);
 }

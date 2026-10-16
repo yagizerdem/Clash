@@ -14,5 +14,5 @@ public sealed class cProgramNode : cIAstNode
         Syntax = syntax;
     }
 
-    public T Accept<T>(IVisitor visitor) => visitor.VisitProgram<T>(this);
+    public T Accept<T>(IVisitor<T> visitor) => visitor.VisitProgram(this);
 }

@@ -15,5 +15,5 @@ public sealed class cDoGroupNode : cBaseAstNode
         Statements = Array.AsReadOnly(statements.ToArray());
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitDoGroup<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitDoGroup(this);
 }

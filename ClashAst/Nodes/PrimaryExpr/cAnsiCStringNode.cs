@@ -11,5 +11,5 @@ public sealed class cAnsiCStringNode : cPrimaryExprNode
     {
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitAnsiCString<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitAnsiCString(this);
 }

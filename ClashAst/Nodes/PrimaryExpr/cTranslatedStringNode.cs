@@ -16,5 +16,5 @@ public sealed class cTranslatedStringNode : cPrimaryExprNode
         Value = cExprNode.Required(value, "value");
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitTranslatedString<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitTranslatedString(this);
 }

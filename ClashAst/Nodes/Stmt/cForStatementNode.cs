@@ -22,5 +22,5 @@ public sealed class cForStatementNode : cStmtNode
         Body = cStmtNode.Required(body, "body");
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitForStatement<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitForStatement(this);
 }

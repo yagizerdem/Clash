@@ -16,5 +16,5 @@ public sealed class cSimpleExpansionNode : cPrimaryExprNode
         Variable = cExprNode.Required(variable, "variable");
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitSimpleExpansion<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitSimpleExpansion(this);
 }

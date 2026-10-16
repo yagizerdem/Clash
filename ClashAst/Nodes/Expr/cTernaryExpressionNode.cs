@@ -22,5 +22,5 @@ public sealed class cTernaryExpressionNode : cExprNode
         Alternative = cExprNode.Required(alternative, "alternative");
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitTernaryExpression<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitTernaryExpression(this);
 }

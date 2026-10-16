@@ -15,5 +15,5 @@ public sealed class cHeredocBodyNode : cBaseAstNode
         Parts = Array.AsReadOnly(parts.ToArray());
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitHeredocBody<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitHeredocBody(this);
 }

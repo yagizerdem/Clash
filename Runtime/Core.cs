@@ -1,15 +1,24 @@
-﻿namespace Runtime;
+﻿using Clash.Ast.Base;
+using Clash.Ast.Nodes.Stmt;
+using Clash.Ast.Visitor;
+
+namespace Runtime;
 
 public class Core
 {
-
-    public Core()
+    private readonly cIAstNode rootNode;
+    public Core(cIAstNode rootNode)
     {
+        this.rootNode = rootNode;
     }
 
     public void Run()
     {
-        Executor.Executor executor = new Executor.Executor();
-        executor.ExecuteCommand(new Executor.Models.Command("echo", ["fucker"]));
+        EvaluationDispatcher dispatcher = new EvaluationDispatcher();
+        rootNode.Accept(dispatcher);
+
     }
+
+
+
 }

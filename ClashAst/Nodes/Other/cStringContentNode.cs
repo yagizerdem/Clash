@@ -15,5 +15,5 @@ public sealed class cStringContentNode : cBaseAstNode
         Value = value;
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitStringContent<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitStringContent(this);
 }

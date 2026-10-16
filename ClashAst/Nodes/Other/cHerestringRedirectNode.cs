@@ -18,5 +18,5 @@ public sealed class cHerestringRedirectNode : cBaseAstNode
         Value = value ?? throw new ArgumentNullException("value");
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitHerestringRedirect<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitHerestringRedirect(this);
 }

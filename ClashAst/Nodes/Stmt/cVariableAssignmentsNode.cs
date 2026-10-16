@@ -16,5 +16,5 @@ public sealed class cVariableAssignmentsNode : cStmtNode
         Assignments = cStmtNode.CopyList(assignments, "assignments");
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitVariableAssignments<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitVariableAssignments(this);
 }

@@ -6,5 +6,5 @@ public interface cIAstNode
 {
     SyntaxInfo Syntax { get; }
 
-    T Accept<T>(IVisitor visitor);
+    T Accept<T>(IVisitor<T> visitor);
 }

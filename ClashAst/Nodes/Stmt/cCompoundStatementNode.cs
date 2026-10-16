@@ -16,5 +16,5 @@ public sealed class cCompoundStatementNode : cStmtNode
         Elements = cStmtNode.CopyList(elements, "elements");
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitCompoundStatement<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitCompoundStatement(this);
 }

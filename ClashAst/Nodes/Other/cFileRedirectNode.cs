@@ -34,5 +34,5 @@ public sealed class cFileRedirectNode : cBaseAstNode
         Destinations = Array.AsReadOnly(destinations.ToArray());
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitFileRedirect<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitFileRedirect(this);
 }

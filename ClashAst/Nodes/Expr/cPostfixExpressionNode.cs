@@ -19,5 +19,5 @@ public sealed class cPostfixExpressionNode : cExprNode
         Operator = cExprNode.Required(@operator, "operator");
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitPostfixExpression<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitPostfixExpression(this);
 }

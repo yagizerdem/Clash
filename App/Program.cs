@@ -5,9 +5,8 @@ using Runtime;
 var parser = new ClashParser();
 cIAstNode rootNode = parser.Parse("echo hit");
 
-Console.WriteLine("Parsing completed.");
 
 
 
-Core core = new Core();
+Core core = new Core(rootNode);
 core.Run();

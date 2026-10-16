@@ -16,5 +16,5 @@ public sealed class cParenthesizedExpressionNode : cExprNode
         Expression = cExprNode.Required(expression, "expression");
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitParenthesizedExpression<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitParenthesizedExpression(this);
 }

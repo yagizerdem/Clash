@@ -16,5 +16,5 @@ public sealed class cTestCommandNode : cStmtNode
         Expression = expression;
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitTestCommand<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitTestCommand(this);
 }

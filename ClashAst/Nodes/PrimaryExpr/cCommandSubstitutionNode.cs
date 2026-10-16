@@ -19,5 +19,5 @@ public sealed class cCommandSubstitutionNode : cPrimaryExprNode
         Redirect = redirect;
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitCommandSubstitution<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitCommandSubstitution(this);
 }

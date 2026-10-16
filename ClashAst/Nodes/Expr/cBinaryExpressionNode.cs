@@ -22,5 +22,5 @@ public sealed class cBinaryExpressionNode : cExprNode
         Right = cExprNode.CopyList(right, "right");
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitBinaryExpression<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitBinaryExpression(this);
 }
