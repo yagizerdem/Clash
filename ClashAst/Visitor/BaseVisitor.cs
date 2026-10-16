@@ -85,3 +85,78 @@ public abstract class BaseVisitor : IVisitor
     // core
     public virtual T VisitConcreteBase<T>(cConcreteBaseAstNode node) => throw NotImplemented(nameof(VisitConcreteBase));
 }
+
+public abstract class ConcreateBaseAstVisitor : BaseVisitor
+{
+    // expr
+    public override T VisitBinaryExpression<T>(cBinaryExpressionNode node) => default!;
+    public override T VisitConcatenation<T>(cConcatenationNode node) => default!;
+    public override T VisitParenthesizedExpression<T>(cParenthesizedExpressionNode node) => default!;
+    public override T VisitPostfixExpression<T>(cPostfixExpressionNode node) => default!;
+    public override T VisitTernaryExpression<T>(cTernaryExpressionNode node) => default!;
+    public override T VisitUnaryExpression<T>(cUnaryExpressionNode node) => default!;
+    public override T VisitWord<T>(cWordNode node) => default!;
+
+    // primary expr
+    public override T VisitAnsiCString<T>(cAnsiCStringNode node) => default!;
+    public override T VisitArithmeticExpansion<T>(cArithmeticExpansionNode node) => default!;
+    public override T VisitBraceExpression<T>(cBraceExpressionNode node) => default!;
+    public override T VisitCommandSubstitution<T>(cCommandSubstitutionNode node) => default!;
+    public override T VisitExpansion<T>(cExpansionNode node) => default!;
+    public override T VisitNumber<T>(cNumberNode node) => default!;
+    public override T VisitProcessSubstitution<T>(cProcessSubstitutionNode node) => default!;
+    public override T VisitRawString<T>(cRawStringNode node) => default!;
+    public override T VisitSimpleExpansion<T>(cSimpleExpansionNode node) => default!;
+    public override T VisitString<T>(cStringNode node) => default!;
+    public override T VisitTranslatedString<T>(cTranslatedStringNode node) => default!;
+
+    // stmt
+    public override T VisitCStyleForStatement<T>(cCStyleForStatementNode node) => default!;
+    public override T VisitCaseStatement<T>(cCaseStatementNode node) => default!;
+    public override T VisitCommand<T>(cCommandNode node) => default!;
+    public override T VisitCompoundStatement<T>(cCompoundStatementNode node) => default!;
+    public override T VisitDeclarationCommand<T>(cDeclarationCommandNode node) => default!;
+    public override T VisitForStatement<T>(cForStatementNode node) => default!;
+    public override T VisitFunctionDefinition<T>(cFunctionDefinitionNode node) => default!;
+    public override T VisitIfStatement<T>(cIfStatementNode node) => default!;
+    public override T VisitList<T>(cListNode node) => default!;
+    public override T VisitNegatedCommand<T>(cNegatedCommandNode node) => default!;
+    public override T VisitPipeline<T>(cPipelineNode node) => default!;
+    public override T VisitRedirectedStatement<T>(cRedirectedStatementNode node) => default!;
+    public override T VisitSubshell<T>(cSubshellNode node) => default!;
+    public override T VisitTestCommand<T>(cTestCommandNode node) => default!;
+    public override T VisitUnsetCommand<T>(cUnsetCommandNode node) => default!;
+    public override T VisitVariableAssignment<T>(cVariableAssignmentNode node) => default!;
+    public override T VisitVariableAssignments<T>(cVariableAssignmentsNode node) => default!;
+    public override T VisitWhileStatement<T>(cWhileStatementNode node) => default!;
+
+    // other
+    public override T VisitArray<T>(cArrayNode node) => default!;
+    public override T VisitCaseItem<T>(cCaseItemNode node) => default!;
+    public override T VisitCommandName<T>(cCommandNameNode node) => default!;
+    public override T VisitComment<T>(cCommentNode node) => default!;
+    public override T VisitDoGroup<T>(cDoGroupNode node) => default!;
+    public override T VisitElifClause<T>(cElifClauseNode node) => default!;
+    public override T VisitElseClause<T>(cElseClauseNode node) => default!;
+    public override T VisitExtglobPattern<T>(cExtglobPatternNode node) => default!;
+    public override T VisitFileDescriptor<T>(cFileDescriptorNode node) => default!;
+    public override T VisitFileRedirect<T>(cFileRedirectNode node) => default!;
+    public override T VisitHeredocBody<T>(cHeredocBodyNode node) => default!;
+    public override T VisitHeredocContent<T>(cHeredocContentNode node) => default!;
+    public override T VisitHeredocEnd<T>(cHeredocEndNode node) => default!;
+    public override T VisitHeredocRedirect<T>(cHeredocRedirectNode node) => default!;
+    public override T VisitHeredocStart<T>(cHeredocStartNode node) => default!;
+    public override T VisitHerestringRedirect<T>(cHerestringRedirectNode node) => default!;
+    public override T VisitRegex<T>(cRegexNode node) => default!;
+    public override T VisitSpecialVariableName<T>(cSpecialVariableNameNode node) => default!;
+    public override T VisitStringContent<T>(cStringContentNode node) => default!;
+    public override T VisitSubscript<T>(cSubscriptNode node) => default!;
+    public override T VisitTestOperator<T>(cTestOperatorNode node) => default!;
+    public override T VisitVariableName<T>(cVariableNameNode node) => default!;
+
+    // root
+    public override T VisitProgram<T>(cProgramNode node) => default!;
+
+    // core
+    public override T VisitConcreteBase<T>(cConcreteBaseAstNode node) => default!;
+}
