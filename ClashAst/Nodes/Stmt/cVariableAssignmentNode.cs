@@ -19,5 +19,5 @@ public sealed class cVariableAssignmentNode : cStmtNode
         Value = cStmtNode.Required(value, "value");
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitVariableAssignment<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitVariableAssignment(this);
 }

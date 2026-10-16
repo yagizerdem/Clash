@@ -16,5 +16,5 @@ public sealed class cBraceExpressionNode : cPrimaryExprNode
         Elements = cExprNode.CopyList(elements, "elements");
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitBraceExpression<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitBraceExpression(this);
 }

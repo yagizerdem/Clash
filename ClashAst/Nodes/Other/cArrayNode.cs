@@ -15,5 +15,5 @@ public sealed class cArrayNode : cBaseAstNode
         Elements = Array.AsReadOnly(elements.ToArray());
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitArray<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitArray(this);
 }

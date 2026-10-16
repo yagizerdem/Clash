@@ -16,5 +16,5 @@ public sealed class cSubshellNode : cStmtNode
         Statements = cStmtNode.CopyList(statements, "statements");
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitSubshell<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitSubshell(this);
 }

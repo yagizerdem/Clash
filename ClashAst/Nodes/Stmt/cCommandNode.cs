@@ -25,5 +25,5 @@ public sealed class cCommandNode : cStmtNode
         Prefixes = cStmtNode.CopyList(prefixes, "prefixes");
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitCommand<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitCommand(this);
 }

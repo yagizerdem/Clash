@@ -25,5 +25,5 @@ public sealed class cIfStatementNode : cStmtNode
         ElseClause = elseClause;
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitIfStatement<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitIfStatement(this);
 }

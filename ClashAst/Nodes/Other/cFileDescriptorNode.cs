@@ -10,5 +10,5 @@ public sealed class cFileDescriptorNode : cBaseAstNode
     {
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitFileDescriptor<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitFileDescriptor(this);
 }

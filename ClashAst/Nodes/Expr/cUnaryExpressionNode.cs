@@ -19,5 +19,5 @@ public sealed class cUnaryExpressionNode : cExprNode
         Operand = cExprNode.Required(operand, "operand");
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitUnaryExpression<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitUnaryExpression(this);
 }

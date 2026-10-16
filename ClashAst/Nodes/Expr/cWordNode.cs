@@ -11,5 +11,5 @@ public sealed class cWordNode : cPrimaryExprNode
     {
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitWord<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitWord(this);
 }

@@ -19,5 +19,5 @@ public sealed class cRedirectedStatementNode : cStmtNode
         Redirects = cStmtNode.CopyList(redirects, "redirects");
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitRedirectedStatement<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitRedirectedStatement(this);
 }

@@ -16,5 +16,5 @@ public sealed class cStringNode : cPrimaryExprNode
         Parts = cExprNode.CopyList(parts, "parts");
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitString<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitString(this);
 }

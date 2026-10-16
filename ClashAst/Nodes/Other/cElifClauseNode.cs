@@ -18,5 +18,5 @@ public sealed class cElifClauseNode : cBaseAstNode
         ThenBranch = Array.AsReadOnly(thenBranch.ToArray());
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitElifClause<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitElifClause(this);
 }

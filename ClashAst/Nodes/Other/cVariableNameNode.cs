@@ -15,5 +15,5 @@ public class cVariableNameNode : cBaseAstNode
         Var = identifier;
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitVariableName<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitVariableName(this);
 }

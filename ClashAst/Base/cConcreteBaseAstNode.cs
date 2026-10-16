@@ -10,5 +10,5 @@ public class cConcreteBaseAstNode: cBaseAstNode
         
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitConcreteBase<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitConcreteBase(this);
 }

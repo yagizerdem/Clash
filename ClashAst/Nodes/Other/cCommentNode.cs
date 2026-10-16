@@ -15,5 +15,5 @@ public sealed class cCommentNode : cBaseAstNode
         Content = content;
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitComment<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitComment(this);
 }

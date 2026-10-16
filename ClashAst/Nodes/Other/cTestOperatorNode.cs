@@ -15,5 +15,5 @@ public sealed class cTestOperatorNode : cBaseAstNode
         Operator = @operator;
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitTestOperator<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitTestOperator(this);
 }

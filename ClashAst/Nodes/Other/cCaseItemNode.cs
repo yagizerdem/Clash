@@ -21,5 +21,5 @@ public sealed class cCaseItemNode : cBaseAstNode
         Terminator = terminator;
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitCaseItem<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitCaseItem(this);
 }

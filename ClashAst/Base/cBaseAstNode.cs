@@ -13,7 +13,7 @@ public abstract class cBaseAstNode : cIAstNode
     }
 
     // used for visitor pattern to implement application logic
-    public abstract T Accept<T>(IVisitor visitor);
+    public abstract T Accept<T>(IVisitor<T> visitor);
 
 
     // utility methods

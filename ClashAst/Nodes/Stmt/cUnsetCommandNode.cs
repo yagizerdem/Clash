@@ -16,5 +16,5 @@ public sealed class cUnsetCommandNode : cStmtNode
         Targets = cStmtNode.CopyList(targets, "targets");
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitUnsetCommand<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitUnsetCommand(this);
 }

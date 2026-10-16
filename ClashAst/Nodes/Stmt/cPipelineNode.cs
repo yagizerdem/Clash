@@ -19,5 +19,5 @@ public sealed class cPipelineNode : cStmtNode
         Operators = cStmtNode.CopyList(operators, "operators");
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitPipeline<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitPipeline(this);
 }

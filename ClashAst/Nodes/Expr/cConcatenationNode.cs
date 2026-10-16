@@ -16,5 +16,5 @@ public sealed class cConcatenationNode : cExprNode
         Parts = cExprNode.CopyList(parts, "parts");
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitConcatenation<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitConcatenation(this);
 }

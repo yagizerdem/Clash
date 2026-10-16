@@ -10,5 +10,5 @@ public sealed class cExtglobPatternNode : cBaseAstNode
     {
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitExtglobPattern<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitExtglobPattern(this);
 }

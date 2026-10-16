@@ -10,5 +10,5 @@ public sealed class cHeredocEndNode : cBaseAstNode
     {
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitHeredocEnd<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitHeredocEnd(this);
 }

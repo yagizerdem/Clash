@@ -19,5 +19,5 @@ public sealed class cExpansionNode : cPrimaryExprNode
         Parts = cExprNode.CopyList(parts, "parts");
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitExpansion<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitExpansion(this);
 }

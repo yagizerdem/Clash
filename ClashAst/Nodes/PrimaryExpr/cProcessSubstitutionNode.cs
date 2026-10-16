@@ -16,5 +16,5 @@ public sealed class cProcessSubstitutionNode : cPrimaryExprNode
         Statements = cExprNode.CopyList(statements, "statements");
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitProcessSubstitution<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitProcessSubstitution(this);
 }

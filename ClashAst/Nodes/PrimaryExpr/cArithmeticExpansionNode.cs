@@ -16,5 +16,5 @@ public sealed class cArithmeticExpansionNode : cPrimaryExprNode
         Expressions = cExprNode.CopyList(expressions, "expressions");
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitArithmeticExpansion<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitArithmeticExpansion(this);
 }

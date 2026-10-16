@@ -19,5 +19,5 @@ public sealed class cCaseStatementNode : cStmtNode
         Items = cStmtNode.CopyList(items, "items");
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitCaseStatement<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitCaseStatement(this);
 }

@@ -54,5 +54,5 @@ public sealed class cHeredocRedirectNode : cBaseAstNode
         Parts = Array.AsReadOnly(parts.ToArray());
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitHeredocRedirect<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitHeredocRedirect(this);
 }

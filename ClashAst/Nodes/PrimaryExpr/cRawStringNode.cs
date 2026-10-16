@@ -11,5 +11,5 @@ public sealed class cRawStringNode : cPrimaryExprNode
     {
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitRawString<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitRawString(this);
 }

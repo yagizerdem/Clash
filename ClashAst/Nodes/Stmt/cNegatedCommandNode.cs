@@ -16,5 +16,5 @@ public sealed class cNegatedCommandNode : cStmtNode
         Command = cStmtNode.Required(command, "command");
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitNegatedCommand<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitNegatedCommand(this);
 }

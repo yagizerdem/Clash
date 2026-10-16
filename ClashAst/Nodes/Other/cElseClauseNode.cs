@@ -15,5 +15,5 @@ public sealed class cElseClauseNode : cBaseAstNode
         Statements = Array.AsReadOnly(statements.ToArray());
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitElseClause<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitElseClause(this);
 }

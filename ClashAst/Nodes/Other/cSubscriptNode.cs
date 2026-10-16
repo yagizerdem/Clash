@@ -21,5 +21,5 @@ public sealed class cSubscriptNode : cBaseAstNode
         Suffix = Array.AsReadOnly(suffix.ToArray());
     }
 
-    public override T Accept<T>(IVisitor visitor) => visitor.VisitSubscript<T>(this);
+    public override T Accept<T>(IVisitor<T> visitor) => visitor.VisitSubscript(this);
 }
